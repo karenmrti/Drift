@@ -1,32 +1,50 @@
 <html>  
 <head lang="en">
+    <meta charset="utf-8" />
     <title>Drift</title>
-    <link rel="stylesheet", href="style.css">
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
-<hr>
-    <h1> test</h1>
+
+
 <br>
-<button id="rainButton">Play</button>
-<audio id="rainAudio" src="audio/rain.mp3" autoplay loop></audio>
-
-<script>
-   const audio = document.getElementById("rainAudio");
-   const button = document.getElementById("rainButton");
-   let isPlaying = true;
-        button.addEventListener("click", ()=> {
-            if(isPlaying){
-                audio.pause();
-                button.innerHTML = "Play";
-            }else{
-                audio.play();
-                button.innerHTML = "Stop";
-            }
-            isPlaying = !isPlaying;
-        })
-    
-</script>
+<div class="track">
+    <button class="audio-toggle" data-audio-id="rainAudio" aria-expanded="false">Play Rain</button>
+    <div class ="volume-popover" data-for="rainAudio" aria-hidden="true">
+        <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
+    </div>    
+    <audio id="rainAudio" src="audio/rain.mp3" autoplay loop></audio>
+</div>
 
 
+<br>
+<div class="track">
+    <button class="audio-toggle" data-audio-id="railwayAudio" aria-expanded="false">Train</button>
+    <div class ="volume-popover" data-for="railwayAudio" aria-hidden="true">
+        <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
+    </div>
+    <audio id="railwayAudio" src="audio/railway-train.mp3" autoplay loop></audio>
+</div>
+
+<br>
+<div class="track">
+<button class="audio-toggle" data-audio-id="whiteAudio">White</button>
+     <div class ="volume-popover" data-for="whiteAudio" aria-hidden="true">
+         <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">   
+     </div>
+    <audio id="whiteAudio" src="audio/white-noise.mp3" autoplay loop></audio>
+</div>
+
+<br>
+<div class="track">
+<button class="audio-toggle" data-audio-id="brownAudio">Brown</button>
+    <div class ="volume-popover" data-for="brownAudio" aria-hidden="true">
+        <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">   
+    </div>
+    <audio id="brownAudio" src="audio/brown-noise.mp3" autoplay loop></audio>
+</div>
+
+<script src="index.js"></script>
 </body>
 </html>
