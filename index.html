@@ -1,0 +1,32 @@
+<html>  
+<head lang="en">
+    <title>Drift</title>
+    <link rel="stylesheet", href="style.css">
+</head>
+<body>
+<hr>
+    <h1> test</h1>
+<br>
+<button id="rainButton">Play</button>
+<audio id="rainAudio" src="audio/rain.mp3" autoplay loop></audio>
+
+<script>
+   const audio = document.getElementById("rainAudio");
+   const button = document.getElementById("rainButton");
+   let isPlaying = true;
+        button.addEventListener("click", ()=> {
+            if(isPlaying){
+                audio.pause();
+                button.innerHTML = "Play";
+            }else{
+                audio.play();
+                button.innerHTML = "Stop";
+            }
+            isPlaying = !isPlaying;
+        })
+    
+</script>
+
+
+</body>
+</html>
