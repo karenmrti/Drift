@@ -3,31 +3,40 @@
     <meta charset="utf-8" />
     <title>Drift</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
 <body>
+<h1 class="text" >Drift</h1>
+
+<div class="master-track">
+    <button class="master-toggle" aria-expanded="false">
+        <ion-icon size="large" name="volume-high-outline"></ion-icon>
+    </button>
+    <div class="master-popover" aria-hidden="true">
+        <input type="range" id="masterVolume" class="master-slider" min="0" max="1" step="0.01" value="1">
+    </div>
+</div>
 
 
-<br>
 <div class="track">
-    <button class="audio-toggle" data-audio-id="rainAudio" aria-expanded="false">Play Rain</button>
+    <button class="audio-toggle" data-audio-id="rainAudio"  aria-expanded="false">
+    <ion-icon name="rainy-outline"></ion-icon>
+    </button>
     <div class ="volume-popover" data-for="rainAudio" aria-hidden="true">
         <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
     </div>    
     <audio id="rainAudio" src="audio/rain.mp3" autoplay loop></audio>
 </div>
 
-
-<br>
 <div class="track">
-    <button class="audio-toggle" data-audio-id="railwayAudio" aria-expanded="false">Train</button>
+    <button class="audio-toggle" data-audio-id="railwayAudio" aria-expanded="false">
+    <ion-icon name="train-outline"></ion-icon>
+    </button>
     <div class ="volume-popover" data-for="railwayAudio" aria-hidden="true">
         <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
     </div>
     <audio id="railwayAudio" src="audio/railway-train.mp3" autoplay loop></audio>
 </div>
 
-<br>
 <div class="track">
 <button class="audio-toggle" data-audio-id="whiteAudio">White</button>
      <div class ="volume-popover" data-for="whiteAudio" aria-hidden="true">
@@ -36,7 +45,7 @@
     <audio id="whiteAudio" src="audio/white-noise.mp3" autoplay loop></audio>
 </div>
 
-<br>
+
 <div class="track">
 <button class="audio-toggle" data-audio-id="brownAudio">Brown</button>
     <div class ="volume-popover" data-for="brownAudio" aria-hidden="true">
@@ -45,6 +54,18 @@
     <audio id="brownAudio" src="audio/brown-noise.mp3" autoplay loop></audio>
 </div>
 
+<div class="track">
+    <button class="audio-toggle" data-audio-id="campfire" data-static-src="images/rainIcon1.png" aria-expanded="false">
+        <ion-icon name="bonfire-outline"></ion-icon>
+    </button>
+    <div class ="volume-popover" data-for="campfire" aria-hidden="true">
+        <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
+    </div>    
+    <audio id="campfire" src="audio/campfire.mp3" autoplay loop></audio>
+</div>
+
 <script src="index.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
