@@ -20,9 +20,9 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 8px 12px;
+  margin: 8px 7px;
 
-  flex: 0 0 calc(20% - 24px); 
+  flex: 0 0 calc(18% - 12px); 
 }
 
 .audio-toggle {
@@ -33,15 +33,19 @@ body{
   height: 100px;
   text-align: center;
   font-size: 20px;
-  opacity: 0.6;
-  transition: 0.3s;
-  display: inline-block;
-  text-decoration: none;
+  opacity: 0.8;
+  transition: transform 0.1s ease,;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 
 }
 
-.audio-toggle:hover {opacity: 1}
+.audio-toggle:hover ion-icon {
+  transform: scale(1.10);
+  transition: transform 0.1s ease;
+}
 
 .audio-toggle.playing {
   background-color:  #27557D;
@@ -108,15 +112,18 @@ body{
 }
 
 .text{
-
-  width: 100%;
-  text-align: center;
-  font-size: 35px;
-  font-family: "Lucida Console";
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  
+  font-size: 30px;
+  font-family: "Zalando Sans SemiExpanded", sans-serif;
+  font-weight: 600;
   color: white;
-  margin-bottom: 30px;
-  position: static;
 
+  margin: 0;
+  padding: 0;
+  z-index: 200;
 }
 
 .audio-toggle .audio-icon {
@@ -134,7 +141,7 @@ ion-icon{
 
 .master-track {
   position: fixed;
-  top: 15px;
+  top: 5px;
   right: 40px;
   z-index: 100;
 }
@@ -205,4 +212,12 @@ ion-icon{
   background: white;
   border-radius: 50%;
   cursor: pointer;
+}
+
+#tracks {
+  display: flex;
+  flex-wrap: wrap;         
+  justify-content: center;  
+  align-content: center;    
+  width: 100%;
 }
