@@ -198,3 +198,91 @@ if (masterBtn && masterPopover && masterSlider) {
     });
   });
 }
+
+// ------
+// Timer
+// -----
+
+
+
+const minutesInput = document.getElementById("timer-minutes");
+const displayEl = document.getElementById("timer-display");
+const startPauseBtn = document.getElementById("timer-start-pause");
+const resetBtn = document.getElementById("timer-reset");
+
+let remainingSeconds = Number(minutesInput.value) * 60; // current countdown in seconds
+let timerId = null;       // setInterval id
+let isRunning = false;    // start/pause state
+
+function formatTime(totalSeconds) {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  const mm = m.toString().padStart(2, "0");
+  const ss = s.toString().padStart(2, "0");
+  return `${mm}:${ss}`;
+}
+
+// Update display based on remainingSeconds
+function updateDisplay() {
+  displayEl.textContent = formatTime(remainingSeconds);
+}
+
+// Start the interval
+function startTimer() {
+  if (isRunning) return; // already running
+  isRunning = true;
+  startPauseBtn.textContent = "Pause";
+
+  timerId = setInterval(() => {
+    remainingSeconds--;
+
+    if (remainingSeconds <= 0) {
+      remainingSeconds = 0;
+      clearInterval(timerId);
+      timerId = null;
+      isRunning = false;
+      startPauseBtn.textContent = "play-outline";
+
+    }
+    updateDisplay();
+  }, 1000);
+}
+
+// Pause the interval
+function pauseTimer() {
+  if (!isRunning) return;
+  isRunning = false;
+  startPauseBtn.textContent = square;
+  clearInterval(timerId);
+  timerId = null;
+}
+
+// Reset timer to input value
+function resetTimer() {
+  pauseTimer();
+  const minutes = Math.max(1, Number(minutesInput.value) || 25); // safe default
+  remainingSeconds = minutes * 60;
+  updateDisplay();
+}
+
+// When user changes minutes, reset the timer to that value
+minutesInput.addEventListener("change", () => {
+  resetTimer();
+});
+
+// Start / Pause button click
+startPauseBtn.addEventListener("click", () => {
+  if (isRunning) {
+    pauseTimer();
+  } else {
+    startTimer();
+  }
+});
+
+// Reset button click
+resetBtn.addEventListener("click", () => {
+  resetTimer();
+});
+
+// Initialize display at load
+updateDisplay();
