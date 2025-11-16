@@ -203,8 +203,6 @@ if (masterBtn && masterPopover && masterSlider) {
 // Timer
 // -----
 
-
-
 const minutesInput = document.getElementById("timer-minutes");
 const displayEl = document.getElementById("timer-display");
 const startPauseBtn = document.getElementById("timer-start-pause");
