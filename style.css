@@ -115,12 +115,10 @@ body{
   position: fixed;
   top: 15px;
   left: 15px;
-  
   font-size: 30px;
   font-family: "Zalando Sans SemiExpanded", sans-serif;
   font-weight: 600;
   color: white;
-
   margin: 0;
   padding: 0;
   z-index: 200;
@@ -235,16 +233,18 @@ ion-icon{
   background-color: #27557D;  
   color: white;
   font-family: "Zalando Sans SemiExpanded", sans-serif;
-  z-index: 100;           /
+  font-weight: bold;
+  z-index: 100;           
 }
 
-/* Left side (title/logo) */
 .timer-left .timer-title {
+  font-family: "Zalando Sans SemiExpanded", sans-serif;
+  font-weight: bold;
   font-size: 18px;
   color:#27557D;
+  
 }
 
-/* Right side (controls) */
 .timer-right {
   display: flex;
   align-items: center;
@@ -256,7 +256,8 @@ ion-icon{
   padding: 4px;
   border-radius: 4px;
   border: none;
-  background:  rgba(255,255,255,0.4);
+  color: white;
+  background: rgba(255,255,255,0.4);
 
 }
 

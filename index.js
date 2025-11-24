@@ -182,6 +182,12 @@ if (masterBtn && masterPopover && masterSlider) {
     masterPopover.classList.toggle("show", show);
     masterPopover.setAttribute("aria-hidden", show ? "false" : "true");
     masterBtn.setAttribute("aria-expanded", show ? "true" : "false");
+    
+    if(!show){
+      audio.volume = 0;
+      masterSlider.value = 0;
+    }
+
   });
 
   // Update master volume for all sounds
@@ -202,15 +208,18 @@ if (masterBtn && masterPopover && masterSlider) {
 // ------
 // Timer
 // -----
-
 const minutesInput = document.getElementById("timer-minutes");
 const displayEl = document.getElementById("timer-display");
 const startPauseBtn = document.getElementById("timer-start-pause");
 const resetBtn = document.getElementById("timer-reset");
 
-let remainingSeconds = Number(minutesInput.value) * 60; // current countdown in seconds
-let timerId = null;       // setInterval id
-let isRunning = false;    // start/pause state
+const playButton = "play";
+const pause = "square";
+const restart = "reload-outline";
+
+let remainingSeconds = Number(minutesInput.value) * 60;
+let timerId = null;       
+let isRunning = false;   
 
 function formatTime(totalSeconds) {
   const m = Math.floor(totalSeconds / 60);
@@ -220,16 +229,14 @@ function formatTime(totalSeconds) {
   return `${mm}:${ss}`;
 }
 
-// Update display based on remainingSeconds
 function updateDisplay() {
   displayEl.textContent = formatTime(remainingSeconds);
 }
 
-// Start the interval
 function startTimer() {
-  if (isRunning) return; // already running
+  if (isRunning) return; 
   isRunning = true;
-  startPauseBtn.textContent = "Pause";
+  startPauseBtn.innerHTML = `<ion-icon size="small" name="${pause}"></ion-icon>`;
 
   timerId = setInterval(() => {
     remainingSeconds--;
@@ -239,23 +246,22 @@ function startTimer() {
       clearInterval(timerId);
       timerId = null;
       isRunning = false;
-      startPauseBtn.textContent = "play-outline";
-
+      startPauseBtn.innerHTML = `<ion-icon size="small" name="${playButton}"></ion-icon>`;
     }
+
     updateDisplay();
   }, 1000);
 }
 
-// Pause the interval
 function pauseTimer() {
   if (!isRunning) return;
   isRunning = false;
-  startPauseBtn.textContent = square;
   clearInterval(timerId);
   timerId = null;
+
+  startPauseBtn.innerHTML = `<ion-icon size="small" name="${playButton}"></ion-icon>`;
 }
 
-// Reset timer to input value
 function resetTimer() {
   pauseTimer();
   const minutes = Math.max(1, Number(minutesInput.value) || 25); // safe default
@@ -263,12 +269,11 @@ function resetTimer() {
   updateDisplay();
 }
 
-// When user changes minutes, reset the timer to that value
 minutesInput.addEventListener("change", () => {
   resetTimer();
 });
 
-// Start / Pause button click
+
 startPauseBtn.addEventListener("click", () => {
   if (isRunning) {
     pauseTimer();
@@ -277,10 +282,10 @@ startPauseBtn.addEventListener("click", () => {
   }
 });
 
-// Reset button click
+
 resetBtn.addEventListener("click", () => {
   resetTimer();
 });
 
-// Initialize display at load
 updateDisplay();
+startPauseBtn.innerHTML = `<ion-icon size="small" name="${playButton}"></ion-icon>`;
